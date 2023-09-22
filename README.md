@@ -1,2 +1,4 @@
 # leetcode-record
-Collection of LeetCode questions to ace the coding interview! - Created using [LeetHub](https://github.com/QasimWani/LeetHub)
+
+The repo contains the leetcode record.
+
