@@ -23,7 +23,7 @@ class Solution:
             # Mark the node as visited
             visited.add(min_node)
 
-            # Update distances and paths to neighboring nodes
+            # Update distances to neighboring nodes
             for neighbor, time in graph[min_node]:
                 distance = distances[min_node] + time
                 if distance < distances[neighbor]:
