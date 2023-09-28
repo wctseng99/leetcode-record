@@ -12,8 +12,6 @@ class Solution:
                 return []
             if node.left is None and node.right is None:
                 return [node.val]
-
             return dfs(node.left) + dfs(node.right)
-
 
         return dfs(root1) == dfs(root2)
