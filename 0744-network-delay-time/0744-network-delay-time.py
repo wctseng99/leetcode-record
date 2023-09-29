@@ -1,32 +1,29 @@
 class Solution:
     def networkDelayTime(self, times: List[List[int]], n: int, k: int) -> int:
         graph = defaultdict(list)
+        distances = {node: float('inf') for node in range(1, n+1)}
+        distances[k] = 0
+        visited = set()
+
         for u, v, w in times:
             graph[u].append((v, w))
         
-        visited = set()
-        distances = {node: float('inf') for node in range(1, n+1)}
-        
-        distances[k] = 0
-
         while len(visited) != n:
             # Find the node with the smallest distance
-            min_dis = float('inf')
             min_node = None
-            for node in range(1, n + 1):
-                if node not in visited and distances[node] < min_dis:
-                    min_dis = distances[node]
+            min_distance = float('inf')
+            for node in distances:
+                if distances[node] < min_distance and node not in visited:
                     min_node = node
-
-            if min_node is None:
+                    min_distance = distances[node]
+            
+            if not min_node:
                 break
-            # Mark the node as visited
+            # Mark it as visited
             visited.add(min_node)
 
-            # Update distances to neighboring nodes
-            for neighbor, time in graph[min_node]:
-                distance = distances[min_node] + time
-                if distance < distances[neighbor]:
-                    distances[neighbor] = distance
+            # Update the the distances of neighbor nodes
+            for neighbor, times in graph[min_node]:
+                distances[neighbor] = min(distances[neighbor], (distances[min_node] + times))
 
         return max(distances.values()) if len(visited) == n else -1
