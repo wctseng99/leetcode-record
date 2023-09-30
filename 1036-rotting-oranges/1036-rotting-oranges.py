@@ -1,14 +1,15 @@
 class Solution:
     def orangesRotting(self, grid: List[List[int]]) -> int:
         queue = deque([])
-        fresh_oranges = 0
+        fresh_oranges = minute = 0
+        
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j] == 2:
-                    queue.append((i, j, 0))
+                    queue.append((i, j, minute))
                 if grid[i][j] == 1:
                     fresh_oranges += 1
-        minute = 0
+
         while queue:
             i, j, minute = queue.popleft()
             for row, col in (i+1, j), (i-1, j), (i, j+1), (i, j-1):
