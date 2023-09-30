@@ -4,14 +4,14 @@ class Solution:
         def dfs(room):
             while room:
                 number = room.pop()
-                unlock.add(number)
+                unlock[number] = True
                 dfs(rooms[number])
 
-        unlock = set()
-        unlock.add(0)
+        unlock = [False] * len(rooms)
+        unlock[0] = True
         dfs(rooms[0])
         
-        return True if len(unlock) == len(rooms) else False
+        return True if all(unlock) else False
 
 
         
