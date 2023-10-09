@@ -1,6 +1,6 @@
 class Solution:
     def searchRange(self, nums: List[int], target: int) -> List[int]:
-        def binary_search(nums, target, left_side):
+        def binary_search(nums, target, is_search_left_side):
             left = 0
             target_index = -1
             right = len(nums) - 1
@@ -15,7 +15,7 @@ class Solution:
                 else:
                     # mid = target
                     target_index = mid
-                    if left_side:
+                    if is_search_left_side:
                         # find the left most target
                         right = mid - 1
                     else:
