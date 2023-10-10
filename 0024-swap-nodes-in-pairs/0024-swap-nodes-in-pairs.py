@@ -13,14 +13,14 @@ class Solution:
         current = dummy
 
         while current.next and current.next.next:
-            # swap
+           
             first = current.next
             second = current.next.next
+						# swap
             current.next = second
             first.next = second.next
             second.next = first
-            # current node to the privious second place.
+
+            # current node to the previous second node place.
             current = current.next.next
         return dummy.next
-
-            
