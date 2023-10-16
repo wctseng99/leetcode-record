@@ -7,14 +7,14 @@
 class Solution:
     def isValidBST(self, root: Optional[TreeNode]) -> bool:
 
-        # using inorder travelsal to check
-        def inOrder(node, lower = -float('inf'), upper = float('inf')):
+        def dfs(node, lower = -float('inf'), upper = float('inf')):
             if not node:
                 return True
             if not (lower < node.val < upper):
                 return False
 
-            # check left subtree and right subtree respectively.
-            return inOrder(node.left, lower, node.val) and inOrder(node.right, node.val, upper)
+            # Check left subtree with updated upper bound
+            # Check right subtree with updated lower bound
+            return dfs(node.left, lower, node.val) and dfs(node.right, node.val, upper)
 
-        return inOrder(root)
+        return dfs(root)
