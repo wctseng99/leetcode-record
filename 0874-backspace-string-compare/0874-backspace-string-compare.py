@@ -3,20 +3,16 @@ class Solution:
         # stack
 
         s_stack, t_stack = [], []
-        for i in s:
-            if i.isalpha():
-                s_stack.append(i)
-            else:
-                if not s_stack:
-                    continue
-                s_stack.pop()
-        
-        for j in t:
-            if j.isalpha():
-                t_stack.append(j)
-            else:
-                if not t_stack:
-                    continue
-                t_stack.pop()
 
-        return s_stack == t_stack
+        def isSameString(string, stack):
+            for char in string:
+                if char.isalpha():
+                    stack.append(char)
+                else:
+                    if not stack:
+                        continue
+                    stack.pop()
+            return stack
+
+
+        return isSameString(s, s_stack) == isSameString(t, t_stack)
