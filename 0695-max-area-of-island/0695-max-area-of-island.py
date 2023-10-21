@@ -2,7 +2,6 @@ class Solution:
     def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
         
         def dfs(x, y):
-            nonlocal curr_area
             if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or grid[x][y] == 0:
                 return 0
             grid[x][y] = 0
@@ -18,7 +17,7 @@ class Solution:
         for i in range(len(grid)):
             for j in range(len(grid[0])):
                 if grid[i][j] == 1:
-                    curr_area = 0
-                    max_area = max(max_area, dfs(i, j))
+                    current_area = dfs(i, j)
+                    max_area = max(max_area, current_area)
 
         return max_area
