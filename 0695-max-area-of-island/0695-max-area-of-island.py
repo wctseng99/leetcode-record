@@ -6,10 +6,7 @@ class Solution:
                 return 0
             grid[x][y] = 0
             curr_area = 1
-            curr_area += dfs(x+1, y)
-            curr_area += dfs(x-1, y)
-            curr_area += dfs(x, y+1)
-            curr_area += dfs(x, y-1)
+            curr_area += dfs(x+1, y) + dfs(x-1, y) + dfs(x, y+1) + dfs(x, y-1)
 
             return curr_area
 
