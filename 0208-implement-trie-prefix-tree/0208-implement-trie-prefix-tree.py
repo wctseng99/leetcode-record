@@ -1,7 +1,7 @@
 class TrieNode():
     def __init__(self):
         self.children = {}
-        self.endOfWord = False
+        self.end_of_word = False
 
 class Trie:
 
@@ -14,7 +14,7 @@ class Trie:
             if char not in cur.children:
                 cur.children[char] = TrieNode()
             cur = cur.children[char]
-        cur.endOfWord = True
+        cur.end_of_word = True
 
     def search(self, word: str) -> bool:
         cur = self.root
@@ -22,7 +22,7 @@ class Trie:
             if char not in cur.children:
                 return False
             cur = cur.children[char]
-        return cur.endOfWord
+        return cur.end_of_word
 
     def startsWith(self, prefix: str) -> bool:
         cur = self.root
