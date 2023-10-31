@@ -12,4 +12,4 @@ class Solution:
             if bigger > smaller:
                 heapq.heappush(max_heap, -(bigger - smaller))
         
-        return - max_heap[0] if len(max_heap) >= 1 else 0
+        return - max_heap[0] if len(max_heap) == 1 else 0
