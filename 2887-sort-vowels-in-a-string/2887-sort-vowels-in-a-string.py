@@ -1,7 +1,8 @@
 class Solution:
     def sortVowels(self, s: str) -> str:
-        vowels = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"]
         vowel_lst = []
+        vowels = "AEIOUaeiou"
+
         for char in s:
             if char in vowels:
                 vowel_lst.append(char)
@@ -15,4 +16,5 @@ class Solution:
                 idx += 1
             else:
                 res.append(char)
+
         return "".join(res)
