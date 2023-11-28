@@ -18,7 +18,6 @@ class Solution:
 
             if not node.left and not node.right:
                 if sum(path) == targetSum:
-                    nonlocal res
                     res.append(path[:]) # copy the path
 
             left = dfs(node.left, path)
