@@ -4,18 +4,12 @@ class Solution:
 
         while left < right:
             if s[left].isalnum() and s[right].isalnum():
-                print(s[left], s[right])
                 if s[left].lower() == s[right].lower():
-                    left += 1
-                    right -= 1
-                    
+                    left, right = left + 1, right - 1
                 else:     
                     return False
 
             else:
-                if not s[left].isalnum(): 
-                    left += 1
-                if not s[right].isalnum(): 
-                    right -= 1
+                left, right = left + (not s[left].isalnum()), right - (not s[right].isalnum())
                     
         return True
