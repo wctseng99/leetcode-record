@@ -7,14 +7,18 @@
 
 class Solution:
     def guessNumber(self, n: int) -> int:
+        # binary search
+        low, high = 1, n
+
+        while low <= high:
+            mid = (low + high) // 2
+            result = guess(mid)
+            if result == 0:
+                return mid
+            if result == -1:  # lower
+                high = mid -1
+            if result == 1: # higher
+                low = mid + 1
+
+        return -1
         
-        mid, lowest, highest = 0, 1, n
-
-        while guess(mid) != 0:
-            mid = (highest + lowest) // 2
-            if guess(mid) == -1:
-                highest = mid - 1
-            elif guess(mid) == 1:
-                lowest = mid + 1
-
-        return mid
