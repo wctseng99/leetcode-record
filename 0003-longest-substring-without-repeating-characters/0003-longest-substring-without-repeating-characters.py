@@ -5,14 +5,12 @@ class Solution:
         chars = set()
 
         for right in range(len(s)):
-            if s[right] not in chars:
-                chars.add(s[right])
-            else:
+            if s[right] in chars:
                 while left < right and s[right] in chars:
                     chars.remove(s[left])
                     left += 1
-                chars.add(s[right])
-            
+                    
+            chars.add(s[right])
             max_length = max(max_length, len(chars))
         
         return max_length
