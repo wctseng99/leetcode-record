@@ -11,8 +11,7 @@ class Solution:
                 return 
             dfs(node.left)
             dfs(node.right)
-            
             node.left, node.right = node.right, node.left
-            
-        dfs(root)
+        
+        dfs(root)    
         return root
