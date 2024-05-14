@@ -14,15 +14,11 @@ class Solution:
         
         queue, graph = deque([node]), {node.val: Node(node.val)}
 
-        # BFS
         while queue:
-            curr = queue.popleft()
-
-            for neighbor in curr.neighbors:
+            cur = queue.popleft()
+            for neighbor in cur.neighbors:
                 if neighbor.val not in graph:
                     graph[neighbor.val] = Node(neighbor.val)
                     queue.append(neighbor)
-
-                graph[curr.val].neighbors.append(graph[neighbor.val])
-       
+                graph[cur.val].neighbors.append(graph[neighbor.val])
         return graph[node.val]
